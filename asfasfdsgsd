@@ -1,0 +1,76 @@
+	-- Gui to Lua
+-- Version: 3.4
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local TextButton = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local TextButton_2 = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local TextBox = Instance.new("TextBox")
+local UICorner_4 = Instance.new("UICorner")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(113, 108, 111)
+Frame.Position = UDim2.new(0, 0, 0.932668388, 0)
+Frame.Size = UDim2.new(0, 399, 0, 53)
+
+UICorner.Parent = Frame
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
+TextButton.Position = UDim2.new(0.342499971, 0, 0.25, 0)
+TextButton.Size = UDim2.new(0, 125, 0, 30)
+TextButton.Font = Enum.Font.Unknown
+TextButton.Text = "Remove Player"
+TextButton.TextColor3 = Color3.fromRGB(148, 0, 0)
+TextButton.TextSize = 14.000
+
+UICorner_2.Parent = TextButton
+
+TextButton_2.Parent = Frame
+TextButton_2.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
+TextButton_2.Position = UDim2.new(0.686716795, 0, 0.25, 0)
+TextButton_2.Size = UDim2.new(0, 125, 0, 30)
+TextButton_2.Font = Enum.Font.Unknown
+TextButton_2.Text = "Add Player"
+TextButton_2.TextColor3 = Color3.fromRGB(27, 145, 0)
+TextButton_2.TextSize = 14.000
+
+UICorner_3.Parent = TextButton_2
+
+TextBox.Parent = Frame
+TextBox.BackgroundColor3 = Color3.fromRGB(89, 89, 89)
+TextBox.Position = UDim2.new(0, 0, 0.245283037, 0)
+TextBox.Size = UDim2.new(0, 125, 0, 30)
+TextBox.Font = Enum.Font.Unknown
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.TextSize = 14.000
+
+UICorner_4.Parent = TextBox
+
+TextButton_2.MouseButton1Click:connect(function()
+	local pipiska = TextBox.Text
+	_G.s = true
+	while _G.s == true do task.wait()
+		pcall( function()
+			if game.Players.LocalPlayer.Character:FindFirstChild("ForceField") or game.Players[pipiska].Character:FindFirstChild("ForceField") 
+				or game.Players:FindFirstChild(pipiska).Character:FindFirstChild("SafeZoneShield") then game.Players[pipiska].Character.HumanoidRootPart.CFrame = CFrame.new(1,1,1) else
+					game.Players[pipiska].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+			end
+		end)
+	end
+end)	
+
+TextButton.MouseButton1Click:connect(function()
+ _G.s = false
+ end)
